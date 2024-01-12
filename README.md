@@ -16,4 +16,4 @@ To include Vector.h, do as follows
 #include "Vector.h"
 ```
 
-If VECTOR_H_IMPLEMENTATION is not defined, Vector.h acts as a header file with only the forward declarations so that the functions can be rewritten if required. Adding VECTOR_H_IMPLEMENTATION, makes it behave like a fully featured library.
+If `VECTOR_H_IMPLEMENTATION` is not defined, Vector.h acts as a header file with only the forward declarations so that the functions can be rewritten if required. Adding `VECTOR_H_IMPLEMENTATION`, makes it behave like a fully featured library.
