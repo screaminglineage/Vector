@@ -1,3 +1,5 @@
+// Example usage of Vector.h
+
 #include <stdio.h>
 
 #define VECTOR_H_IMPLEMENTATION
@@ -69,11 +71,6 @@ int main() {
     vec_del(&new_vec);
     printf("%zu %zu\n", new_vec.len, new_vec.capacity);
     
-    int a = vec_insert(&new_vec, 0, 10);
-    printf("%d\n", a);
-
-
-
     putchar('\n');
     return 0;
 }
