@@ -82,7 +82,7 @@ Vec vec_new() {
 }
 
 // Create vector from an already existing array
-Vec vec_from_array(int* arr, size_t len) {
+Vec vec_from_array(int *arr, size_t len) {
     if (arr == NULL) {
         fprintf(stderr, "\nError in allocating\n");
         exit(1);
@@ -101,7 +101,7 @@ Vec vec_from_array(int* arr, size_t len) {
 }
 
 // Display contents of vector
-void vec_display(Vec* vector) {
+void vec_display(Vec *vector) {
     for(size_t i=0; i<vector->len; i++) {
         printf("%d ", vector->data[i]);
     }
@@ -110,13 +110,13 @@ void vec_display(Vec* vector) {
 
 // Return pointer to the first element
 // Will return NULL if empty
-int* vec_start(Vec* vector) {
+int *vec_start(Vec *vector) {
     return vector->data;
 }
 
 // Return pointer to the last element
 // Will return NULL if empty
-int* vec_end(Vec* vector) {
+int *vec_end(Vec *vector) {
     if (vector->data == NULL) {
         return NULL;
     }
@@ -124,7 +124,7 @@ int* vec_end(Vec* vector) {
 }
 
 // Get pointer to the element at a given index
-int* vec_get(Vec* vector, size_t index) {
+int *vec_get(Vec *vector, size_t index) {
     if (index < vector->len) {
         return (vector->data + index);
     } else {
@@ -134,7 +134,7 @@ int* vec_get(Vec* vector, size_t index) {
 } 
 
 // Resize vector by doubling the capacity each time
-int vec_resize(Vec* vector) {
+int vec_resize(Vec *vector) {
     // Handle empty vector
     if (vector->capacity == 0) {
         vector->data = (int*)malloc(sizeof(int));
@@ -160,7 +160,7 @@ int vec_resize(Vec* vector) {
 }
 
 // Push value at the end of vector, resizing if required
-void vec_push(Vec* vector, int num) {
+void vec_push(Vec *vector, int num) {
     if (vector->len >= vector->capacity) {
         if (vec_resize(vector) == 1) {
             fprintf(stderr, "\nError in allocating\n");
@@ -172,20 +172,20 @@ void vec_push(Vec* vector, int num) {
 }
 
 // Push another array at the end of the vector
-void vec_extend(Vec* vector, int* arr, size_t len) {
+void vec_extend(Vec *vector, int *arr, size_t len) {
     for (size_t i = 0; i < len; i++) {
         vec_push(vector, arr[i]);
     }
 }
 
 // Pop value and get back a pointer to it
-int* vec_pop(Vec* vector) {
+int *vec_pop(Vec *vector) {
     if (vector->data == NULL) {
         fprintf(stderr, "\na SEG FAULT for you: empty vector cant pop\n");
         return NULL;
     }
 
-    int* num = vector->data + vector->len - 1;
+    int *num = vector->data + vector->len - 1;
     vector->len -= 1;
     return num;
 }
@@ -193,7 +193,7 @@ int* vec_pop(Vec* vector) {
 // Insert element at given index, resizing if required
 // Index cannot be beyond the last index (use vec_push instead for that)
 // Moves all elements after the given index (O(n) time complexity)
-int vec_insert(Vec* vector, size_t index, int num) {
+int vec_insert(Vec *vector, size_t index, int num) {
     if (index >= vector->len) {
         return 1;
     }
@@ -215,13 +215,13 @@ int vec_insert(Vec* vector, size_t index, int num) {
 
 // Push value at the first index
 // It is simply a special case of vec_insert
-void vec_push_front(Vec* vector, int num) {
+void vec_push_front(Vec *vector, int num) {
     vec_insert(vector, 0, num);
 }
 
 // Return index of element
 // Returns -1 if not found
-size_t vec_find(Vec* vector, int num) {
+size_t vec_find(Vec *vector, int num) {
     for (size_t i = 0; i < vector->len; i++) {
         if (vector->data[i] == num) {
             return i;
@@ -232,7 +232,7 @@ size_t vec_find(Vec* vector, int num) {
 
 // Replace element at index with new element
 // Returns 1 if invalid element is passed in
-int vec_replace(Vec* vector, size_t index, int num) {
+int vec_replace(Vec *vector, size_t index, int num) {
     if (index >= vector->len) {
         return 1;
     }
@@ -243,7 +243,7 @@ int vec_replace(Vec* vector, size_t index, int num) {
 // Remove element from index
 // Moves over all elements after it (O(n) time complexity)
 // Returns 1 if element is invalid
-int vec_remove(Vec* vector, size_t index) {
+int vec_remove(Vec *vector, size_t index) {
     if (index >= vector->len) {
         return 1;
     }
@@ -255,7 +255,7 @@ int vec_remove(Vec* vector, size_t index) {
 }
 
 // Delete vector
-void vec_del(Vec* vector) {
+void vec_del(Vec *vector) {
     free(vector->data);
     vector->len = 0;
     vector->capacity = 0;
