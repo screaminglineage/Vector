@@ -1,5 +1,5 @@
 # Vector
-A simple dynamic array implementation in C using a single header file
+A simple dynamic array implementation in C using a single header file, inspired by https://github.com/nothings/stb/.
 
 ## Build Instructions
 
